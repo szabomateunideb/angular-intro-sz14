@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import {LoginDto} from '../models/login.dto';
+import {AuthService} from '../services/auth.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-login.component',

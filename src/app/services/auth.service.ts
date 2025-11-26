@@ -15,7 +15,7 @@ export class AuthService {
   constructor(private http: HttpClient) { }
 
   login(loginDto: LoginDto) {
-    this
+    return this
       .http
       .post(`${this.apiUrl}/bejelentkezes`, loginDto, {responseType: "text"})
       .pipe(

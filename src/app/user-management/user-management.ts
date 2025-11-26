@@ -24,13 +24,13 @@ export class UserManagement {
   addUser(){
     if(this.newUser.name &&this.newUser.email &&this.newUser.age){
       this.newUser.id = this.users.length + 1;
-      this.users.push(this.newUser);
+      this.users.push({...this.newUser});
       this.newUser = {id:0, name:'',email:'',age:0};
     }
   }
 
   editUser(user: User){
-    this.editingUser = user;
+    this.editingUser = {...user};
   }
 
   updateUser(){
@@ -38,7 +38,7 @@ export class UserManagement {
       const index =
         this.users.findIndex(user => user.id === this.editingUser!.id);
       if(index > -1){
-        this.users[index] = this.editingUser;
+        this.users[index] = {...this.editingUser};
       }
       this.editingUser = null;
     }

@@ -1,0 +1,73 @@
+<div class="container">
+  <!-- Kötések - bindings - property binding - event binding-->
+
+  <h1>{{ title }}</h1> <!--String interpoláció-->
+  <button [disabled]="isVisible">Tulajdonságkötés</button>
+  <input [value]="userInput" placeholder="Tulajdonságkötés (Egyutas)">
+
+  <input [(ngModel)]="userInput" placeholder="Kétutas adatkötés">
+  <p>A megadott szöveg {{userInput}}</p>
+
+  <button (click)="toggleHighlight()">Kiemelés váltása: {{isHighlighted}}</button>
+
+  <!--Attribútum direktívák -->
+  <p [ngClass]="{'highlighted' : isHighlighted}">A szövegkiemelés változik a gomb hatására</p>
+  <p [ngStyle]="{'font-size.px': fontSize}">Ez a szöveg változó betűméretű</p>
+  <button (click)="fontSize = fontSize + 2">Betűméret növelése</button>
+  <button (click)="fontSize = fontSize - 2">Betűméret csökkentése</button>
+
+  <!--Strukturális direktívák -->
+  <!-- * régi, @ új -->
+
+  <div *ngIf="isVisible">
+    <p>Ez a szöveg látható, ha az isVisible értéke igaz.</p>
+  </div>
+  <button (click)="isVisible = !isVisible">
+    {{isVisible ? 'Elrejtés' : 'Megjelenítés'}}
+  </button>
+
+  @if (isVisible){
+    <p>isVisible igaz</p>
+  } @else {
+    <p>isVisible hamis</p>
+  }
+
+  <h2>Gyümölcsök listája</h2>
+  <ul>
+    <li *ngFor="let item of items">{{item}}</li>
+  </ul>
+
+  <ul>
+    @for (item of items; track item) {
+      <li>{{item}}</li>
+    } @empty {
+      <li>Nincs elem</li>
+    }
+  </ul>
+
+  <h2>Válassz gyümölcsöt</h2>
+  <select [(ngModel)]="selectedFruit">
+    <option value="Alma">Alma</option>
+    <option value="Banán">Banán</option>
+    <option value="Cseresznye">Cseresznye</option>
+  </select>
+
+  <div [ngSwitch]="selectedFruit">
+    <p *ngSwitchCase="'Alma'">Kiválasztott gyömölcs: Alma</p>
+    <p *ngSwitchCase="'Banán'">Kiválasztott gyömölcs: Banán</p>
+    <p *ngSwitchCase="'Cseresznye'">Kiválasztott gyömölcs: Cseresznye</p>
+  </div>
+
+  @switch (selectedFruit){
+    @case ('Alma') { <p>Kiválasztott gyümölcs: Alma</p>}
+    @case ('Banán') { <p>Kiválasztott gyümölcs: Banán</p>}
+    @case ('Cseresznye') { <p>Kiválasztott gyümölcs: Cseresznye</p>}
+    @default {
+      <p>Nincs kiválasztott gyümölcs</p>
+    }
+  }
+
+
+
+</div>
+

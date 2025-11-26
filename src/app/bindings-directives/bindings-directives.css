@@ -1,0 +1,15 @@
+.container{
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px
+}
+
+button{
+  margin: 5px;
+  padding: 10px 20px;
+}
+
+.highlighted{
+  background-color: lightyellow;
+  font-weight: bold;
+}
